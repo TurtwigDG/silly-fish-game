@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://c2ey7253gy3rt"]
+
+[ext_resource type="Script" uid="uid://dbrhgppsaxjk" path="res://prefabs/camera.gd" id="1_4ujri"]
+[ext_resource type="PackedScene" uid="uid://dsa558ttd25l8" path="res://prefabs/player/player.tscn" id="1_lbtn7"]
+[ext_resource type="PackedScene" uid="uid://dsm5vyaxho1kp" path="res://prefabs/levels/room_1_1.tscn" id="1_v5aoc"]
+
+[node name="MainScene" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("player")]
+script = ExtResource("1_4ujri")
+player = NodePath("../Player")
+
+[node name="ColorRect" type="ColorRect" parent="Camera2D"]
+offset_left = -240.0
+offset_top = -135.0
+offset_right = 240.0
+offset_bottom = 135.0
+color = Color(0, 0, 0.1764706, 1)
+
+[node name="Room1-1" parent="." instance=ExtResource("1_v5aoc")]
+position = Vector2(-240, -135)
+
+[node name="Player" parent="." instance=ExtResource("1_lbtn7")]
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+color = Color(1, 1, 0, 1)
+energy = 0.8
+blend_mode = 1

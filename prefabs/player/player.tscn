@@ -1,0 +1,163 @@
+[gd_scene load_steps=24 format=3 uid="uid://dsa558ttd25l8"]
+
+[ext_resource type="Texture2D" uid="uid://wn56c5jw1lhw" path="res://assets/art/spritesheets/player/no-hat/fihidlenohat.png" id="1_rdx4y"]
+[ext_resource type="Script" uid="uid://k11m72xrbmdt" path="res://scripts/player.gd" id="1_wv1mm"]
+[ext_resource type="PackedScene" uid="uid://djbqb47jao12m" path="res://prefabs/player/little_fish.tscn" id="2_binfn"]
+[ext_resource type="Texture2D" uid="uid://dienjuv2fwrpx" path="res://assets/art/spritesheets/player/no-hat/fihmovenohat.png" id="2_wv1mm"]
+[ext_resource type="AudioStream" uid="uid://2b3mueposr2g" path="res://assets/audio/sfx/Movement 1.wav" id="5_ev8v4"]
+[ext_resource type="AudioStream" uid="uid://dlwvi3kcotrxb" path="res://assets/audio/sfx/Dash.wav" id="6_vhck3"]
+[ext_resource type="AudioStream" uid="uid://blwmg3phqa6e5" path="res://assets/audio/sfx/Sonar .wav" id="7_2c4n1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_binfn"]
+atlas = ExtResource("1_rdx4y")
+region = Rect2(0, 0, 36, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_klv5p"]
+atlas = ExtResource("1_rdx4y")
+region = Rect2(36, 0, 36, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iylwk"]
+atlas = ExtResource("1_rdx4y")
+region = Rect2(72, 0, 36, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ev8v4"]
+atlas = ExtResource("1_rdx4y")
+region = Rect2(108, 0, 36, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vhck3"]
+atlas = ExtResource("1_rdx4y")
+region = Rect2(144, 0, 36, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2c4n1"]
+atlas = ExtResource("1_rdx4y")
+region = Rect2(180, 0, 36, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oo3uv"]
+atlas = ExtResource("1_rdx4y")
+region = Rect2(216, 0, 36, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_30gqm"]
+atlas = ExtResource("1_rdx4y")
+region = Rect2(252, 0, 36, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hvqk4"]
+atlas = ExtResource("2_wv1mm")
+region = Rect2(0, 0, 36, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b6byk"]
+atlas = ExtResource("2_wv1mm")
+region = Rect2(36, 0, 36, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6barq"]
+atlas = ExtResource("2_wv1mm")
+region = Rect2(72, 0, 36, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_agiw0"]
+atlas = ExtResource("2_wv1mm")
+region = Rect2(108, 0, 36, 36)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ot5ig"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_binfn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_klv5p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iylwk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ev8v4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vhck3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2c4n1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oo3uv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_30gqm")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hvqk4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b6byk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6barq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_agiw0")
+}],
+"loop": true,
+"name": &"swim",
+"speed": 12.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t13t3"]
+
+[sub_resource type="Gradient" id="Gradient_binfn"]
+offsets = PackedFloat32Array(0, 0.74666667)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_klv5p"]
+gradient = SubResource("Gradient_binfn")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("spriteContainer", "sprite", "sfxSource")]
+collision_mask = 3
+script = ExtResource("1_wv1mm")
+slowSwimSpeed = 150.0
+fastSwimSpeed = 250.0
+sharkDashSpeed = 750.0
+sharkSwimSpeed = 350.0
+dashSpeed = 500.0
+dashWindow = 0.2
+dashCooldownWindow = 0.3
+spriteContainer = NodePath("SpriteContainer")
+sprite = NodePath("SpriteContainer/AnimatedSprite2D")
+sfxSource = NodePath("SFX")
+maxFishCount = 10
+fishObject = ExtResource("2_binfn")
+
+[node name="SpriteContainer" type="Node2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpriteContainer"]
+sprite_frames = SubResource("SpriteFrames_ot5ig")
+animation = &"swim"
+frame_progress = 0.29954803
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_t13t3")
+
+[node name="FishContainer" type="Node2D" parent="."]
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(0.9019608, 0.48235294, 0.20784314, 1)
+energy = 0.5
+texture = SubResource("GradientTexture2D_klv5p")
+
+[node name="SFX" type="Node2D" parent="."]
+
+[node name="Swim" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("5_ev8v4")
+volume_db = -10.0
+
+[node name="Dash" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("6_vhck3")
+
+[node name="Sonar" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("7_2c4n1")

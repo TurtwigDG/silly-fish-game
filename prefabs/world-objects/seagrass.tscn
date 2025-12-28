@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://cboxvm21n262d"]
+
+[ext_resource type="Texture2D" uid="uid://w105x7wvilbe" path="res://assets/art/sprites/background/seagrass.png" id="1_0vitp"]
+
+[sub_resource type="Gradient" id="Gradient_0vitp"]
+offsets = PackedFloat32Array(0, 0.74666667)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7fvrx"]
+gradient = SubResource("Gradient_0vitp")
+width = 32
+height = 32
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="Seagrass" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_0vitp")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0.5, 0.5)
+color = Color(0.6784314, 0.70980394, 0.21176471, 1)
+energy = 0.3
+texture = SubResource("GradientTexture2D_7fvrx")

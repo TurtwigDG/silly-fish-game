@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://djbqb47jao12m"]
+[gd_scene load_steps=29 format=3 uid="uid://djbqb47jao12m"]
 
 [ext_resource type="Script" uid="uid://dxm001a7j5d8x" path="res://scripts/player/little_fish.gd" id="1_3osat"]
 [ext_resource type="Texture2D" uid="uid://dexsrftupld3w" path="res://assets/art/spritesheets/player/little-fish/fih_lil_dash.png" id="2_nan3s"]
@@ -166,10 +166,14 @@ gradient = SubResource("Gradient_binfn")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3osat"]
+
 [node name="LittleFish" type="CharacterBody2D" node_paths=PackedStringArray("collectionArea", "sprite")]
+collision_layer = 16
+collision_mask = 32
 script = ExtResource("1_3osat")
 tetherDistance = 25.0
-moveSpeed = 100.0
+moveSpeed = 75.0
 stunWindow = 3.0
 knockbackWindow = 0.2
 knockbackSpeed = 500.0
@@ -181,6 +185,7 @@ sprite_frames = SubResource("SpriteFrames_x65ut")
 animation = &"dash"
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 rotation = 1.5707964
@@ -190,3 +195,7 @@ shape = SubResource("CapsuleShape2D_w4on3")
 color = Color(0.9019608, 0.48235294, 0.20784314, 1)
 energy = 0.1
 texture = SubResource("GradientTexture2D_3osat")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_3osat")

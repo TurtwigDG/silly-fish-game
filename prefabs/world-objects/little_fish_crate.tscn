@@ -1,0 +1,82 @@
+[gd_scene load_steps=12 format=3 uid="uid://g1ugvsrsoglr"]
+
+[ext_resource type="Script" uid="uid://dc2nx5la1blsg" path="res://little_fish_collectable.gd" id="1_rbkel"]
+[ext_resource type="Texture2D" uid="uid://dnpe1qniqknk1" path="res://assets/art/sprites/world-objects/cratetrapped.png" id="1_wq0gl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wq0gl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rbkel"]
+atlas = ExtResource("1_wq0gl")
+region = Rect2(0, 0, 35, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xi7r3"]
+atlas = ExtResource("1_wq0gl")
+region = Rect2(35, 0, 35, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jyekv"]
+atlas = ExtResource("1_wq0gl")
+region = Rect2(70, 0, 35, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hefqr"]
+atlas = ExtResource("1_wq0gl")
+region = Rect2(105, 0, 35, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bosj3"]
+atlas = ExtResource("1_wq0gl")
+region = Rect2(140, 0, 35, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vmuqr"]
+atlas = ExtResource("1_wq0gl")
+region = Rect2(175, 0, 35, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u58og"]
+atlas = ExtResource("1_wq0gl")
+region = Rect2(210, 0, 35, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0prau"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rbkel")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rbkel")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xi7r3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jyekv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hefqr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bosj3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vmuqr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u58og")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 12.0
+}]
+
+[node name="LittleFishCrate" type="Node2D" node_paths=PackedStringArray("collider")]
+script = ExtResource("1_rbkel")
+upgradeName = "LittleFish"
+collider = NodePath("Area2D")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1, 30)
+shape = SubResource("CircleShape2D_wq0gl")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_0prau")
+animation = &"idle"
+frame_progress = 0.7369891

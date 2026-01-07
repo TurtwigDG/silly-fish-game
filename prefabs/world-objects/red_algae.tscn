@@ -8,8 +8,6 @@ colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ku7gw"]
 gradient = SubResource("Gradient_53epi")
-width = 128
-height = 128
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
@@ -21,5 +19,5 @@ color = Color(0.72156864, 0.22352941, 0.24705882, 1)
 texture = SubResource("GradientTexture2D_ku7gw")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0.5, 0.5)
+position = Vector2(0.5, 0)
 texture = ExtResource("1_53epi")

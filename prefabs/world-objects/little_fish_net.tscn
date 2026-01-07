@@ -1,0 +1,61 @@
+[gd_scene load_steps=9 format=3 uid="uid://b0hqp3k47785y"]
+
+[ext_resource type="Script" uid="uid://dc2nx5la1blsg" path="res://little_fish_collectable.gd" id="1_cvfld"]
+[ext_resource type="Texture2D" uid="uid://bsb632yclijce" path="res://assets/art/sprites/world-objects/net.png" id="2_xa0pi"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_afsvu"]
+radius = 12.0
+height = 35.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h2qu8"]
+atlas = ExtResource("2_xa0pi")
+region = Rect2(0, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_soaf8"]
+atlas = ExtResource("2_xa0pi")
+region = Rect2(48, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_46alp"]
+atlas = ExtResource("2_xa0pi")
+region = Rect2(96, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kb8oe"]
+atlas = ExtResource("2_xa0pi")
+region = Rect2(144, 0, 48, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c4f0t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h2qu8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_soaf8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_46alp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kb8oe")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 8.0
+}]
+
+[node name="LittleFishNet" type="Node2D" node_paths=PackedStringArray("collider")]
+script = ExtResource("1_cvfld")
+upgradeName = "LittleFish"
+collider = NodePath("Area2D")
+knockbackSpeed = 200.0
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-2, 12)
+shape = SubResource("CapsuleShape2D_afsvu")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_c4f0t")
+animation = &"idle"
+frame_progress = 0.5242999

@@ -47,9 +47,12 @@ func take_hit():
 	stunTimer = 0
 	sprite.rotation = currentDir.angle()
 	
-	print(position)
+func little_fish_recover(bigFish) -> void:
+	if stunned and stunTimer >= knockbackWindow:
+		print(name + "Recovered")
+		bigFish.call_deferred("recover_fish")
+		queue_free()
 	
 func on_body_entered(collision) -> void:
-	if collision.name == "Player" and stunned and stunTimer >= knockbackWindow:
-		collision.call_deferred("recover_fish")
-		queue_free()
+	if collision.name == "Player":
+		little_fish_recover(collision)
